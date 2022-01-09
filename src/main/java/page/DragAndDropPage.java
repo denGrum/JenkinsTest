@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 @Getter
 public class DragAndDropPage implements Page {
 
-  private String Url = Page.BASE_URL + "/drag-and-drop.html";
+  private String Url = BASE_URL + "/drag-and-drop.html";
 
   private By header = By.cssSelector("body>h1");
 
