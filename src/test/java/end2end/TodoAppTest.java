@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static base.Start.closeBrowser;
+
 public class TodoAppTest {
 
   private String pageHeader;
@@ -23,7 +25,7 @@ public class TodoAppTest {
 
   @AfterMethod(groups = {"all"})
   private void afterMethod() {
-    Start.closeBrowser();
+    closeBrowser();
   }
 
   @Test(
