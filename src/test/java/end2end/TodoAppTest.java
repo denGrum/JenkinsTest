@@ -1,7 +1,9 @@
+package end2end;
+
 import base.Start;
 import flow.TodoAppFlow;
+import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
-import jdk.jfr.Description;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,14 +14,14 @@ public class TodoAppTest {
   private String remainingText;
   private String text;
 
-  @BeforeMethod
+  @BeforeMethod(groups = {"all"})
   private void beforeMethod() {
     pageHeader = "Todo App";
     remainingText = "0 of 5 remaining";
     text = "Тестове словосочетание";
   }
 
-  @AfterMethod
+  @AfterMethod(groups = {"all"})
   private void afterMethod() {
     Start.closeBrowser();
   }
