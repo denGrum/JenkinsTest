@@ -9,7 +9,7 @@ public class DragAndDropFlow implements Flow {
 
   @Step("Проверка загрузки страницы Drag and Drop")
   public DragAndDropFlow assertPageLoaded(String expectedHeader) {
-    Assert.assertEquals(find(page(DragAndDropPage.class).getHeader()).getText(), expectedHeader);
+    Assert.assertEquals(element(page(DragAndDropPage.class).getHeader()).getText(), expectedHeader);
     return this;
   }
 
@@ -17,8 +17,8 @@ public class DragAndDropFlow implements Flow {
   public DragAndDropFlow dragAndDrop() {
     mouseAction()
         .dragAndDrop(
-            find(page(DragAndDropPage.class).getDraggableField()),
-            find(page(DragAndDropPage.class).getDroppableField()))
+            element(page(DragAndDropPage.class).getDraggableField()),
+            element(page(DragAndDropPage.class).getDroppableField()))
         .build()
         .perform();
     return this;
@@ -27,7 +27,7 @@ public class DragAndDropFlow implements Flow {
   @Step("Проверка текста droppable квадрата после перетаскивания")
   public DragAndDropFlow assertDroppableFieldChange(String expectedText) {
     Assert.assertEquals(
-        find(page(DragAndDropPage.class).getDroppableField()).getText(), expectedText);
+        element(page(DragAndDropPage.class).getDroppableField()).getText(), expectedText);
     return this;
   }
 
