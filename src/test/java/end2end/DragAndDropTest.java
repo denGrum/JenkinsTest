@@ -15,20 +15,20 @@ public class DragAndDropTest {
   private String pageHeader;
   private String dropResultText;
 
-  @BeforeMethod(groups = {"all","not"})
+  @BeforeMethod(groups = {"all","dragAndDrop"})
   private void beforeMethod() {
     pageHeader = "Drag and Drop example for Selenium Tests";
     dropResultText = "Dropped!";
   }
 
-  @AfterMethod(groups = {"all","not"})
+  @AfterMethod(groups = {"all","dragAndDrop"})
   private void afterMethod() {
     closeBrowser();
   }
 
   @Test(
       description = "TC1. Драг-Энд-Дроп тест",
-      groups = {"all","not"})
+      groups = {"all","dragAndDrop"})
   @Description("Проверка работы страницы Драг-Энд-Дроп")
   @Owner("GrumezaDO")
   void dragAndDropTest() {

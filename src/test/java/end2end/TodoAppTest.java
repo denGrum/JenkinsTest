@@ -16,21 +16,21 @@ public class TodoAppTest {
   private String remainingText;
   private String text;
 
-  @BeforeMethod(groups = {"all"})
+  @BeforeMethod(groups = {"all", "todoApp"})
   private void beforeMethod() {
     pageHeader = "Todo App";
     remainingText = "0 of 5 remaining";
     text = "Тестове словосочетание";
   }
 
-  @AfterMethod(groups = {"all"})
+  @AfterMethod(groups = {"all", "todoApp"})
   private void afterMethod() {
     closeBrowser();
   }
 
   @Test(
       description = "TC2. Туду-Апп тест",
-      groups = {"all"})
+      groups = {"all", "todoApp"})
   @Description("Проверка работы страницы Туду-Апп")
   @Owner("GrumezaDO")
   void todoAppTest() {
