@@ -19,14 +19,14 @@ public class LoginTest {
   private String loggedInText;
   private List<String> credentials;
 
-  @BeforeMethod(groups = {"all", "login"})
+  @BeforeMethod(alwaysRun = true)
   private void beforeMethod() {
     pageHeader = "Login";
     loggedInText = "You are now logged in!";
     credentials = new ArrayList<>();
   }
 
-  @AfterMethod(groups = {"all", "login"})
+  @AfterMethod(alwaysRun = true)
   private void afterMethod() {
     closeBrowser();
   }

@@ -15,13 +15,13 @@ public class DragAndDropTest {
   private String pageHeader;
   private String dropResultText;
 
-  @BeforeMethod(groups = {"all","dragAndDrop"})
+  @BeforeMethod(alwaysRun = true)
   private void beforeMethod() {
     pageHeader = "Drag and Drop example for Selenium Tests";
     dropResultText = "Dropped!";
   }
 
-  @AfterMethod(groups = {"all","dragAndDrop"})
+  @AfterMethod(alwaysRun = true)
   private void afterMethod() {
     closeBrowser();
   }

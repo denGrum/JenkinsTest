@@ -16,14 +16,14 @@ public class TodoAppTest {
   private String remainingText;
   private String text;
 
-  @BeforeMethod(groups = {"all", "todoApp"})
+  @BeforeMethod(alwaysRun = true)
   private void beforeMethod() {
     pageHeader = "Todo App";
     remainingText = "0 of 5 remaining";
     text = "Тестове словосочетание";
   }
 
-  @AfterMethod(groups = {"all", "todoApp"})
+  @AfterMethod(alwaysRun = true)
   private void afterMethod() {
     closeBrowser();
   }
