@@ -2,6 +2,7 @@ package flow;
 
 import base.Flow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.TodoAppPage;
 
@@ -9,39 +10,50 @@ public class TodoAppFlow implements Flow {
 
   @Step("Проверка загрузки страницы Todo App")
   public TodoAppFlow assertPageLoaded(String expectedHeader) {
-    Assert.assertEquals(element(page(TodoAppPage.class).getHeader()).getText(), expectedHeader);
+    WebElement element = page(TodoAppPage.class).getHeader();
+    Assert.assertTrue(element.isDisplayed() && element.getText().equals(expectedHeader));
     return this;
   }
 
   @Step("Клик по всем чекбоксам на странице")
   public TodoAppFlow clickOnCheckboxes() {
-    elements(page(TodoAppPage.class).getCheckboxes()).forEach(element -> element.click());
+    page(TodoAppPage.class)
+        .getCheckboxes()
+        .forEach(
+            element -> {
+              Assert.assertTrue(element.isDisplayed() && element.isEnabled());
+              element.click();
+            });
     return this;
   }
 
   @Step("Проверка оставшегося количества пустых чекбоксов")
   public TodoAppFlow chekRemainingTextField(String remainingText) {
-    Assert.assertTrue(
-        element(page(TodoAppPage.class).getRemainingTextField()).getText().contains(remainingText));
+    WebElement element = page(TodoAppPage.class).getRemainingTextField();
+    Assert.assertTrue(element.isDisplayed() && element.getText().equals(remainingText));
     return this;
   }
 
   @Step("Ввод текста в поле")
-  public TodoAppFlow fillTextInInputField(String text) {
-    element(page(TodoAppPage.class).getInputField()).sendKeys(text);
+  public TodoAppFlow fillTextInInputField(String sendableText) {
+    WebElement element = page(TodoAppPage.class).getInputTextField();
+    Assert.assertTrue(element.isDisplayed() && element.isEnabled());
+    element.sendKeys(sendableText);
     return this;
   }
 
   @Step("Клик по кнопке 'add'")
   public TodoAppFlow clickOnAddButton() {
-    element(page(TodoAppPage.class).getAddButton()).click();
+    WebElement element = page(TodoAppPage.class).getAddButton();
+    Assert.assertTrue(element.isDisplayed() && element.isEnabled());
+    element.click();
     return this;
   }
 
   @Step("Проверка текста добаленного чекбокса")
   public TodoAppFlow assertAddedCheckboxTextField(String expectedText) {
-    Assert.assertTrue(
-        element(page(TodoAppPage.class).getAddedCheckbox()).getText().contains(expectedText));
+    WebElement element = page(TodoAppPage.class).getAddedCheckbox();
+    Assert.assertTrue(element.isDisplayed() && element.getText().equals(expectedText));
     return this;
   }
 

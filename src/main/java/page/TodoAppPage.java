@@ -2,22 +2,31 @@ package page;
 
 import base.Page;
 import lombok.Getter;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @Getter
 public class TodoAppPage implements Page {
 
   private String Url = BASE_URL + "/todo-app.html";
 
-  private By header = By.cssSelector("h2");
+  @FindBy(css = "h2")
+  private WebElement header;
 
-  private By checkboxes = By.cssSelector("input[type='checkbox']");
+  @FindBy(css = "input[type='checkbox']")
+  private List<WebElement> checkboxes;
 
-  private By remainingTextField = By.cssSelector(".ng-binding");
+  @FindBy(css = "div.well>span")
+  private WebElement remainingTextField;
 
-  private By inputField = By.cssSelector("input[type='text']");
+  @FindBy(css = "input[type='text']")
+  private WebElement inputTextField;
 
-  private By addButton = By.id("addbutton");
+  @FindBy(id = "addbutton")
+  private WebElement addButton;
 
-  private By addedCheckbox = By.cssSelector(".done-false");
+  @FindBy(css = ".done-false")
+  private WebElement addedCheckbox;
 }
