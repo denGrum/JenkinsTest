@@ -2,6 +2,7 @@ package flow;
 
 import base.Flow;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.DragAndDropPage;
 
@@ -9,25 +10,24 @@ public class DragAndDropFlow implements Flow {
 
   @Step("Проверка загрузки страницы Drag and Drop")
   public DragAndDropFlow assertPageLoaded(String expectedHeader) {
-    Assert.assertEquals(element(page(DragAndDropPage.class).getHeader()).getText(), expectedHeader);
+    WebElement element = page(DragAndDropPage.class).getHeader();
+    Assert.assertTrue(element.isDisplayed() && element.getText().equals(expectedHeader));
     return this;
   }
 
   @Step("Перетаскивание draggable квадрата на droppable")
   public DragAndDropFlow dragAndDrop() {
-    mouseAction()
-        .dragAndDrop(
-            element(page(DragAndDropPage.class).getDraggableField()),
-            element(page(DragAndDropPage.class).getDroppableField()))
-        .build()
-        .perform();
+    WebElement dragElement = page(DragAndDropPage.class).getDraggableField();
+    WebElement dropElement = page(DragAndDropPage.class).getDroppableField();
+    Assert.assertTrue(dragElement.isDisplayed() && dropElement.isDisplayed());
+    mouseAction().dragAndDrop(dragElement, dropElement).build().perform();
     return this;
   }
 
   @Step("Проверка текста droppable квадрата после перетаскивания")
   public DragAndDropFlow assertDroppableFieldChange(String expectedText) {
-    Assert.assertEquals(
-        element(page(DragAndDropPage.class).getDroppableField()).getText(), expectedText);
+    WebElement element = page(DragAndDropPage.class).getDroppableField();
+    Assert.assertEquals(element.getText(), expectedText);
     return this;
   }
 
