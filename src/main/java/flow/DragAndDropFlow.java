@@ -27,7 +27,7 @@ public class DragAndDropFlow implements Flow {
   @Step("Проверка текста droppable квадрата после перетаскивания")
   public DragAndDropFlow assertDroppableFieldChange(String expectedText) {
     WebElement element = page(DragAndDropPage.class).getDroppableField();
-    Assert.assertEquals(element.getText(), expectedText);
+    Assert.assertTrue(element.isDisplayed() && element.getText().equals(expectedText));
     return this;
   }
 
