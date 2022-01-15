@@ -28,7 +28,7 @@ public class DragAndDropTest {
 
   @Test(
       description = "TC1. Драг-Энд-Дроп тест",
-      groups = {"all","dragAndDrop"})
+      groups = {"all", "dragAndDrop"})
   @Description("Проверка работы страницы Драг-Энд-Дроп")
   @Owner("GrumezaDO")
   void dragAndDropTest() {
