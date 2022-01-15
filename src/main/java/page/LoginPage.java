@@ -2,22 +2,31 @@ package page;
 
 import base.Page;
 import lombok.Getter;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @Getter
 public class LoginPage implements Page {
 
   private String Url = BASE_URL + "/login-form.html";
 
-  private By header = By.cssSelector("body h2");
+  @FindBy(css = "body h2")
+  private WebElement header;
 
-  private By credentialTextFields = By.cssSelector("strong");
+  @FindBy(css = "strong")
+  private List<WebElement> credentialTextFields;
 
-  private By loginInputField = By.id("username");
+  @FindBy(id = "username")
+  private WebElement loginInputField;
 
-  private By passwordInputField = By.id("password");
+  @FindBy(id = "password")
+  private WebElement passwordInputField;
 
-  private By loginButton = By.cssSelector("button");
+  @FindBy(css = "button")
+  private WebElement loginButton;
 
-  private By loggedInTextField = By.id("logged-in");
+  @FindBy(id = "logged-in")
+  private WebElement loggedInTextField;
 }

@@ -12,37 +12,42 @@ public class LoginFlow implements Flow {
 
   @Step("Проверка загрузки страницы Логин")
   public LoginFlow assertPageLoaded(String expectedHeader) {
-    WebElement element = element(page(LoginPage.class).getHeader());
+    WebElement element = page(LoginPage.class).getHeader();
     Assert.assertTrue(element.isDisplayed() && element.getText().equals(expectedHeader));
     return this;
   }
 
-  @Step("Сохранение пароль и логин для последующей авторизации")
+  @Step("Сохранение пароля и логина для последующей авторизации")
   public LoginFlow saveCredentials(List<String> credentials) {
-    elements(page(LoginPage.class).getCredentialTextFields())
-        .forEach(element -> credentials.add(element.getText()));
+    page(LoginPage.class)
+        .getCredentialTextFields()
+        .forEach(
+            element -> {
+              Assert.assertTrue(element.isDisplayed());
+              credentials.add(element.getText());
+            });
     return this;
   }
 
   @Step("Ввод логина")
   public LoginFlow fillLogin(List<String> credentials) {
-    WebElement element = element(page(LoginPage.class).getLoginInputField());
-    Assert.assertTrue(element.isDisplayed());
+    WebElement element = page(LoginPage.class).getLoginInputField();
+    Assert.assertTrue(element.isDisplayed() && element.isEnabled());
     element.sendKeys(credentials.get(0));
     return this;
   }
 
   @Step("Ввод пароля")
   public LoginFlow fillPassword(List<String> credentials) {
-    WebElement element = element(page(LoginPage.class).getPasswordInputField());
-    Assert.assertTrue(element.isDisplayed());
+    WebElement element = page(LoginPage.class).getPasswordInputField();
+    Assert.assertTrue(element.isDisplayed() && element.isEnabled());
     element.sendKeys(credentials.get(1));
     return this;
   }
 
   @Step("Клик по кнопке Логин")
   public LoginFlow clickOnLoginButton() {
-    WebElement element = element(page(LoginPage.class).getLoginButton());
+    WebElement element = page(LoginPage.class).getLoginButton();
     Assert.assertTrue(element.isDisplayed() && element.isEnabled());
     element.click();
     return this;
@@ -50,7 +55,7 @@ public class LoginFlow implements Flow {
 
   @Step("Проверка успешности авторизации")
   public LoginFlow assertLoginSuccess(String loggedInText) {
-    WebElement element = element(page(LoginPage.class).getLoggedInTextField());
+    WebElement element = page(LoginPage.class).getLoggedInTextField();
     Assert.assertTrue(element.isDisplayed() && element.getText().equals(loggedInText));
     return this;
   }
