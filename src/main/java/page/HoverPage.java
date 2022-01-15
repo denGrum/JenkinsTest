@@ -1,11 +1,9 @@
 package page;
 
 import base.Page;
-import base.Start;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class HoverPage implements Page {
@@ -26,8 +24,4 @@ public class HoverPage implements Page {
 
   @FindBy(css = "div.secondary-clicked>h1")
   private WebElement changedPageHeader;
-
-  {
-    PageFactory.initElements(Start.getWebDriver(), this);
-  }
 }
