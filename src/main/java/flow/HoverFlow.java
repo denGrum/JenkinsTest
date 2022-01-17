@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.HoverPage;
 
-public class HoverFlow implements Flow {
+public class HoverFlow implements Flow<HoverFlow> {
 
   @Step("Проверка загрузки страницы")
   public HoverFlow assertPageLoaded(String header) {
@@ -47,7 +47,7 @@ public class HoverFlow implements Flow {
   }
 
   @Override
-  public <T extends Flow> String goToFlow() {
+  public String goToFlow() {
     return page(HoverPage.class).getUrl();
   }
 }

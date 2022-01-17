@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.TodoAppPage;
 
-public class TodoAppFlow implements Flow {
+public class TodoAppFlow implements Flow<TodoAppFlow> {
 
   @Step("Проверка загрузки страницы Todo App")
   public TodoAppFlow assertPageLoaded(String expectedHeader) {
@@ -58,7 +58,7 @@ public class TodoAppFlow implements Flow {
   }
 
   @Override
-  public <T extends Flow> String goToFlow() {
+  public String goToFlow() {
     return page(TodoAppPage.class).getUrl();
   }
 }

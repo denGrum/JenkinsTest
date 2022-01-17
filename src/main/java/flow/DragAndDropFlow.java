@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.DragAndDropPage;
 
-public class DragAndDropFlow implements Flow {
+public class DragAndDropFlow implements Flow<DragAndDropFlow> {
 
   @Step("Проверка загрузки страницы Drag and Drop")
   public DragAndDropFlow assertPageLoaded(String expectedHeader) {
@@ -32,7 +32,10 @@ public class DragAndDropFlow implements Flow {
   }
 
   @Override
-  public <T extends Flow> String goToFlow() {
+  public String goToFlow() {
     return page(DragAndDropPage.class).getUrl();
   }
+
+
+
 }

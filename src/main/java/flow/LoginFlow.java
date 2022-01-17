@@ -8,7 +8,7 @@ import page.LoginPage;
 
 import java.util.List;
 
-public class LoginFlow implements Flow {
+public class LoginFlow implements Flow<LoginFlow> {
 
   @Step("Проверка загрузки страницы Логин")
   public LoginFlow assertPageLoaded(String expectedHeader) {
@@ -61,7 +61,7 @@ public class LoginFlow implements Flow {
   }
 
   @Override
-  public <T extends Flow> String goToFlow() {
+  public String goToFlow() {
     return page(LoginPage.class).getUrl();
   }
 }
