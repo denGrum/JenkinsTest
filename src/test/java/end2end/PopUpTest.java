@@ -47,7 +47,6 @@ public class PopUpTest {
         .checkAlertTextAndConfirm(alertText)
         .clickOnPopUpButton()
         .checkPopUpTextAndClose(popUpText)
-        .assertPageLoaded(mainPageHeader)
-        .browserSleep(3000);
+        .assertPageLoaded(mainPageHeader);
   }
 }

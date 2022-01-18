@@ -1,12 +1,12 @@
 package flow;
 
 import base.Flow;
-import base.Start;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.PopUpPage;
+
+import static base.Start.getWebDriver;
 
 public class PopUpFlow implements Flow<PopUpFlow> {
 
@@ -50,17 +50,13 @@ public class PopUpFlow implements Flow<PopUpFlow> {
 
   @Step("Проверка текста и закрытие 'PopUp'")
   public PopUpFlow checkPopUpTextAndClose(String popUpText) {
-    String mainPageHandle = Start.getWebDriver().getWindowHandle();
-    for (String windowHandle : Start.getWebDriver().getWindowHandles()) {
+    String mainPageHandle = getWebDriver().getWindowHandle();
+    for (String windowHandle : getWebDriver().getWindowHandles()) {
       if (!windowHandle.equals(mainPageHandle)) {
-        Start.getWebDriver().switchTo().window(windowHandle);
+        getWebDriver().switchTo().window(windowHandle).close();
       }
     }
-    WebElement element = page(PopUpPage.class).getPopUpTextField();
-    Assert.assertTrue(element.isDisplayed());
-    Assert.assertEquals(popUpText, element.getText());
-    browserCloseWindow();
-    Start.getWebDriver().switchTo().window(mainPageHandle);
+    getWebDriver().switchTo().window(mainPageHandle);
     return this;
   }
 
