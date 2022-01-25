@@ -32,7 +32,7 @@ public class Start {
 
   @SneakyThrows
   public <T extends Flow> T goTo(Class<T> cls) {
-    T t = cls.getConstructor().newInstance();
+    T t = cls.getDeclaredConstructor().newInstance();
     webDriver.get(t.goToFlow());
     return t;
   }
