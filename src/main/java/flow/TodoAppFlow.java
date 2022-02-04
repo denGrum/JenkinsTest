@@ -1,12 +1,13 @@
 package flow;
 
+import base.BrowserActions;
 import base.Flow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.TodoAppPage;
 
-public class TodoAppFlow implements Flow<TodoAppFlow> {
+public class TodoAppFlow implements Flow, BrowserActions<TodoAppFlow> {
 
   @Step("Проверка загрузки страницы Todo App")
   public TodoAppFlow assertPageLoaded(String expectedHeader) {

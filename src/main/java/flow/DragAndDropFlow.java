@@ -1,12 +1,13 @@
 package flow;
 
+import base.BrowserActions;
 import base.Flow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.DragAndDropPage;
 
-public class DragAndDropFlow implements Flow<DragAndDropFlow> {
+public class DragAndDropFlow implements Flow, BrowserActions<DragAndDropFlow> {
 
   @Step("Проверка загрузки страницы Drag and Drop")
   public DragAndDropFlow assertPageLoaded(String expectedHeader) {

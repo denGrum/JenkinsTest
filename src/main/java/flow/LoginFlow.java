@@ -1,5 +1,6 @@
 package flow;
 
+import base.BrowserActions;
 import base.Flow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -8,7 +9,7 @@ import page.LoginPage;
 
 import java.util.List;
 
-public class LoginFlow implements Flow<LoginFlow> {
+public class LoginFlow implements Flow, BrowserActions<LoginFlow> {
 
   @Step("Проверка загрузки страницы Логин")
   public LoginFlow assertPageLoaded(String expectedHeader) {

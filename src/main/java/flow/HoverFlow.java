@@ -1,12 +1,13 @@
 package flow;
 
+import base.BrowserActions;
 import base.Flow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page.HoverPage;
 
-public class HoverFlow implements Flow<HoverFlow> {
+public class HoverFlow implements Flow, BrowserActions<HoverFlow> {
 
   @Step("Проверка загрузки страницы")
   public HoverFlow assertPageLoaded(String header) {

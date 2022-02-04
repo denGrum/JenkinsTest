@@ -1,6 +1,5 @@
 package base;
 
-import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.interactions.Actions;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public interface Flow<U> {
+public interface Flow {
 
   String goToFlow();
 
@@ -28,41 +27,5 @@ public interface Flow<U> {
   default Alert alertAction() {
     return new WebDriverWait(Start.getWebDriver(), Duration.ofSeconds(5))
         .until(ExpectedConditions.alertIsPresent());
-  }
-
-  @Step("Переход на предыдущую страницу")
-  default U browserBack() {
-    Start.getWebDriver().navigate().back();
-    return (U) this;
-  }
-
-  @Step("Переход на последующую страницу")
-  default U browserForward() {
-    Start.getWebDriver().navigate().forward();
-    return (U) this;
-  }
-
-  @Step("Обновление страницы")
-  default U browserRefresh() {
-    Start.getWebDriver().navigate().refresh();
-    return (U) this;
-  }
-
-  @Step("Закрытие окна браузера")
-  default U browserCloseWindow() {
-    Start.getWebDriver().close();
-    return (U) this;
-  }
-
-  @Step("Ожидание")
-  @SneakyThrows
-  default U browserSleep(long timeForWaiting) {
-    try {
-      Thread.sleep(timeForWaiting);
-    } catch (InterruptedException ex) {
-      Thread.currentThread().interrupt();
-      throw new RuntimeException(ex);
-    }
-    return (U) this;
   }
 }

@@ -1,5 +1,6 @@
 package flow;
 
+import base.BrowserActions;
 import base.Flow;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -8,7 +9,7 @@ import page.PopUpPage;
 
 import static base.Start.getWebDriver;
 
-public class PopUpFlow implements Flow<PopUpFlow> {
+public class PopUpFlow implements Flow, BrowserActions<PopUpFlow> {
 
   @Step("Проверка загрузки страницы")
   public PopUpFlow assertPageLoaded(String headerText) {
