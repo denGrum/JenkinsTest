@@ -16,7 +16,7 @@ public class Start {
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
     options
-        .setHeadless(true)
+        .setHeadless(false)
         .setImplicitWaitTimeout(Duration.ofSeconds(20))
         .addArguments("--window-size=1920,1080");
     webDriver = new ChromeDriver(options);
